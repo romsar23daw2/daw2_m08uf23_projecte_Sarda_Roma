@@ -1,8 +1,16 @@
 <?php
 require 'vendor/autoload.php';
+session_start(); // Inici de sessió
 
 use Laminas\Ldap\Attribute;
 use Laminas\Ldap\Ldap;
+
+if (!isset($_SESSION['adm'])) {
+  header("Location: ./index.php");
+  exit;
+}
+
+use Laminas\Ldap\Attribute;
 
 ini_set('display_errors', 1);
 #Dades de la nova entrada
@@ -55,8 +63,8 @@ $dn = 'uid=' . $uid . ',ou=' . $unorg . ',dc=fjeclot,dc=net';
 
 if ($ldap->add($dn, $nova_entrada)) {
   echo "Usuari creat";
-  echo '<a href="http://zend-rosaca.fjeclot.net/projFinal/menu.php">Torna al menú</a>';
+  echo '<a href="https://zend-rosaca.fjeclot.net/projFinal/menu.php">Torna al menú</a>';
 } else {
   echo "Error al crear l'usuari";
-  echo '<a href="http://zend-rosaca.fjeclot.net/projFinal/menu.php">Torna al menú</a>';
+  echo '<a href="https://zend-rosaca.fjeclot.net/projFinal/menu.php">Torna al menú</a>';
 }

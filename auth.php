@@ -3,7 +3,9 @@ require 'vendor/autoload.php';
 
 use Laminas\Ldap\Ldap;
 
+
 ini_set('display_errors', 0);
+
 if ($_POST['cts'] && $_POST['adm']) {
 	$opcions = [
 		'host' => 'zend-rosaca.fjeclot.net',
@@ -33,7 +35,7 @@ if ($_POST['cts'] && $_POST['adm']) {
 </head>
 
 <body>
-	<a href="http://zend-rosaca.fjeclot.net/projFinal/index.php">Torna a la pàgina inicial</a>
+	<a href="https://zend-rosaca.fjeclot.net/projFinal/index.php">Torna a la pàgina inicial</a>
 </body>
 
 </html>

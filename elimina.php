@@ -1,8 +1,14 @@
 <?php
 require 'vendor/autoload.php';
+session_start(); // Inici de sessió
 
 use Laminas\Ldap\Attribute;
 use Laminas\Ldap\Ldap;
+
+if (!isset($_SESSION['adm'])) {
+  header("Location: ./index.php");
+  exit;
+}
 
 ini_set('display_errors', 0);
 #
@@ -29,8 +35,8 @@ $ldap->bind();
 try {
   $ldap->delete($dn);
   echo "<b>Entrada esborrada</b><br>";
-  echo '<a href="http://zend-rosaca.fjeclot.net/projFinal/menu.php">Torna al menú</a>';
+  echo '<a href="https://zend-rosaca.fjeclot.net/projFinal/menu.php">Torna al menú</a>';
 } catch (Exception $e) {
   echo "<b>Aquesta entrada no existeix</b><br>";
-  echo '<a href="http://zend-rosaca.fjeclot.net/projFinal/menu.php">Torna al menú</a>';
+  echo '<a href="https://zend-rosaca.fjeclot.net/projFinal/menu.php">Torna al menú</a>';
 }

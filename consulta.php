@@ -1,7 +1,13 @@
 <?php
 require 'vendor/autoload.php';
+session_start(); // Inici de sessió
 
 use Laminas\Ldap\Ldap;
+
+if (!isset($_SESSION['adm'])) {
+  header("Location: ./index.php");
+  exit;
+}
 
 ini_set('display_errors', 0);
 if ($_GET['usr'] && $_GET['ou']) {
@@ -36,13 +42,13 @@ if ($_GET['usr'] && $_GET['ou']) {
 
 <body>
   <h2>Formulari de selecció d'usuari</h2>
-  <form action="http://zend-rosaca.fjeclot.net/projFinal/consulta.php" method="GET">
+  <form action="https://zend-rosaca.fjeclot.net/projFinal/consulta.php" method="GET">
     Unitat organitzativa: <input type="text" name="ou"><br>
     Usuari: <input type="text" name="usr"><br>
     <input type="submit" value="Consultar" />
     <input type="reset" value="Netejar" />
   </form>
-  <a href="http://zend-rosaca.fjeclot.net/projFinal/menu.php">Torna al menú</a>
+  <a href="https://zend-rosaca.fjeclot.net/projFinal/menu.php">Torna al menú</a>
 </body>
 
 </html>
